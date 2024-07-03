@@ -1,10 +1,45 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { useRef, useState } from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// const App = () => {
+//   const [myNum, setMyNum] = useState(0);
+//   const inputOne = useRef();
+//   const inputTwo = useRef();
+//   const getNumBox = () => {
+//     console.log("Hello");
+//     console.log(inputOne.current);
+//     inputOne.current.style.width = "400px";
+//   };
+//   const getTextBox = () => {
+//     console.log("world");
+//     console.log(inputTwo.current);
+//   };
+//   return (
+//     <>
+//       <h2>Learn....</h2>
+//       <input
+//         ref={inputOne}
+//         value={myNum}
+//         type="number"
+//         style={{ width: "100px" }}
+//         onChange={(e) => setMyNum(e.target.value)}
+//       />
+//       <input
+//         ref={inputTwo}
+//         value={myNum}
+//         type="text"
+//         onChange={(e) => setMyNum(e.target.value)}
+//       />
+//       <h3>Value is: {myNum}</h3>
+//       <button onClick={() => getNumBox()}>Rupee</button>
+//       <button onClick={() => getTextBox()}>Doller</button>
+//     </>
+//   );
+// };
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <App />
