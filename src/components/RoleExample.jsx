@@ -18,3 +18,23 @@ export default function RoleExample() {
     </div>
   );
 }
+
+export function AccessibleName() {
+  return (
+    <div>
+      <button>Submit</button>
+      <button>Cancel</button>
+    </div>
+  );
+}
+
+export function MoreNames() {
+  return (
+    <div>
+      <label htmlFor="email">Email</label>
+      <input type="text" id="email" />
+      <label htmlFor="search">Search</label>
+      <input type="text" id="search" />
+    </div>
+  );
+}

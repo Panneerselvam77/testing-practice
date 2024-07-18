@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import UserForm from "./UserForm";
 import { act } from "react";
-import RoleExample from "./RoleExample";
+import RoleExample, { AccessibleName, MoreNames } from "./RoleExample";
 
 test("it show two inputs and a button", () => {
   // Rener the component
@@ -67,4 +67,30 @@ test("can find element by role", () => {
     const ele = screen.getByRole(role);
     expect(ele).toBeInTheDocument();
   }
+});
+
+test("can select by accissible name", () => {
+  render(<AccessibleName />);
+  const submitBtn = screen.getByRole("button", {
+    name: /Submit/i,
+  });
+  const cancelBtn = screen.getByRole("button", {
+    name: /Cancel/i,
+  });
+
+  expect(submitBtn).toBeInTheDocument();
+  expect(cancelBtn).toBeInTheDocument();
+});
+
+test("make sure two inputs rendered", () => {
+  render(<MoreNames />);
+
+  const emailInputs = screen.getByRole("textbox", {
+    name: /Email/i,
+  });
+  const searchInputs = screen.getByRole("textbox", {
+    name: /Search/i,
+  });
+  expect(emailInputs).toBeInTheDocument();
+  expect(searchInputs).toBeInTheDocument();
 });
