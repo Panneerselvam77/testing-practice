@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import UserForm from "./UserForm";
 import { act } from "react";
+import RoleExample from "./RoleExample";
 
 test("it show two inputs and a button", () => {
   // Rener the component
@@ -43,4 +44,27 @@ test("it calls onUserAdd when the form is submitted", async () => {
   // Assertion to make sure "onUserAdd" gets called with email/name
   expect(argList).toHaveLength(1);
   expect(argList[0][0]).toEqual({ name: "Jane", email: "Jane@gmail.com" });
+});
+
+test("can find element by role", () => {
+  render(<RoleExample />);
+  const roles = [
+    "link",
+    "button",
+    "contentinfo",
+    "heading",
+    "banner",
+    "img",
+    "checkbox",
+    "radio",
+    "textbox",
+    "listitem",
+    "list",
+    "spinbutton",
+  ];
+
+  for (let role of roles) {
+    const ele = screen.getByRole(role);
+    expect(ele).toBeInTheDocument();
+  }
 });

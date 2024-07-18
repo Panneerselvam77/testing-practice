@@ -6,7 +6,7 @@ export default function UserForm({ onUserAdd }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, email);
+    // console.log(name, email);
     onUserAdd({ name, email });
   };
   return (
