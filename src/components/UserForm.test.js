@@ -1,8 +1,13 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import UserForm from "./UserForm";
 import { act } from "react";
-import RoleExample, { AccessibleName, MoreNames } from "./RoleExample";
+import RoleExample, {
+  AccessibleName,
+  ColorNames,
+  FormDatas,
+  MoreNames,
+} from "./RoleExample";
 
 test("it show two inputs and a button", () => {
   // Rener the component
@@ -93,4 +98,42 @@ test("make sure two inputs rendered", () => {
   });
   expect(emailInputs).toBeInTheDocument();
   expect(searchInputs).toBeInTheDocument();
+});
+
+// Single Element
+test("getBy", async () => {
+  render(<ColorNames />);
+  // screen.getByRole("textbox");
+  // expect(() => screen.getByRole("textbox")).toThrow();
+  // expect(() => screen.queryByRole("textbox")).toEqual(null);
+
+  // let errorThrown = false;
+  // try {
+  //   await screen.findByRole("textbox");
+  // } catch (error) {
+  //   errorThrown = true;
+  // }
+  // expect(errorThrown).toEqual(true);
+  expect(screen.getByRole("list")).toBeInTheDocument();
+  expect(screen.queryByRole("list")).toBeInTheDocument();
+  expect(await screen.findByRole("list")).toBeInTheDocument();
+});
+// Multiple Element
+test("getBy", async () => {
+  render(<ColorNames />);
+  expect(screen.getAllByRole("listitem")).toHaveLength(3);
+  expect(screen.queryAllByRole("listitem")).toHaveLength(3);
+  expect(await screen.findAllByRole("listitem")).toHaveLength(3);
+});
+
+test("the form data", () => {
+  render(<FormDatas />);
+  // const form = screen.getByRole("form");
+  // const btn = within(form).getAllByRole("button");
+  // expect(btn).toHaveLength(2);
+  // expect(form).toContainRole("button", 2);
+  const form = screen.getByLabelText("form");
+
+  const buttons = within(form).getAllByRole("button");
+  expect(buttons).toHaveLength(2);
 });

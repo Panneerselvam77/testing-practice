@@ -38,3 +38,25 @@ export function MoreNames() {
     </div>
   );
 }
+
+export function ColorNames() {
+  return (
+    <ul>
+      <li>Red</li>
+      <li>Blue</li>
+      <li>Green</li>
+    </ul>
+  );
+}
+
+export function FormDatas() {
+  return (
+    <div>
+      <button>GO</button>
+      <form aria-label="form">
+        <button>Save</button>
+        <button>Cancel</button>
+      </form>
+    </div>
+  );
+}
